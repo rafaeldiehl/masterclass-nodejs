@@ -8,10 +8,10 @@ const log = require('./logger');
   Espaço disponível -> os.freemem()
   Espaço total -> os.totalmem()
   O valor default é em bytes
-  Para converter para KB é necessário dividir por 10 ^ -3
-  Para converter para MB é necessário dividir por 10 ^ -6
-  Para converter para GB é necessário dividir por 10 ^ -9
-  Para converter para TB é necessário dividir por 10 ^ -12
+  Para converter para KB é necessário multiplicar por 10 ^ -3
+  Para converter para MB é necessário multiplicar por 10 ^ -6
+  Para converter para GB é necessário multiplicar por 10 ^ -9
+  Para converter para TB é necessário multiplicar por 10 ^ -12
 */
 
 setInterval(() => {
