@@ -2,6 +2,7 @@
   O módulo `os` fornece métodos e propriedades de utilitários relacionados ao sistema operacional.
 */
 const os = require('os');
+const log = require('./logger');
 
 /* 
   Espaço disponível -> os.freemem()
@@ -46,4 +47,7 @@ setInterval(() => {
   console.clear();
   console.log('======== CPU Stats ========');
   console.table(stats);
+
+  log(`${JSON.stringify(stats)}\n`);
+
 }, 1000);
