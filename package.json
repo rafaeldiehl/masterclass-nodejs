@@ -5,7 +5,8 @@
   "main": "logger.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon http/server.js",
+    "start": "nodemon http/api/index.js | nodemon http/server.js",
+    "server": "nodemon http/server.js",
     "api": "nodemon http/api/index.js"
   },
   "repository": {

@@ -9,9 +9,7 @@ const port = 5000;
 
 http.createServer((req, res) => {
 
-  let { url } = req;
-
-  const file = url === '/' ? 'index.html' : url
+  const file = req.url === '/' ? 'index.html' : req.url
   const filePath = path.join(__dirname, 'public', file);
   const extname = path.extname(filePath);
 
