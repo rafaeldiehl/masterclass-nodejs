@@ -22,9 +22,13 @@ body {
   align-items: center;
 }
 
+main {
+  width: 25vw;
+  min-width: 300px;
+}
+
 .container {
   width: 100%;
-  max-width: 400px;
 }
 
 h1 {
@@ -74,6 +78,8 @@ li {
   display:flex;
   align-items: center;
   justify-content: space-between;
+
+  padding-left: 10px;
   
   border-bottom: 1px solid #595966;
 }
@@ -116,4 +122,11 @@ li span {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #595966;
+}
+
+@media (max-width: 530px) {
+  main {
+    width: 80vw;
+    min-width: 0;
+  }
 }

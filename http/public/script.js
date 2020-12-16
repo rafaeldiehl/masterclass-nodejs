@@ -30,9 +30,12 @@ async function addElement({ name, url }) {
 }
 
 async function removeElement(button, link) {
-  if (confirm('Tem certeza que deseja remover?'))
-    console.log(link.innerHTML, link.href);
+  if (confirm('Tem certeza que deseja remover?')) {
     button.parentNode.remove();
+  } else {
+    return;
+  }
+  
 
   await fetch(`http://localhost:3000?name=${link.innerHTML}&url=${link.href}&del=1`)
     .then(data => data.json());
