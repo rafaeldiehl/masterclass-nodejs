@@ -7,8 +7,7 @@ async function load() {
   const res = await fetch("http://localhost:3000/")
     .then(data => data.json())
   
-  res.urls.map(({name, url}) => addElement({name, url}));
-  console.log(res.urls);
+  res.urls.map(({ name, url }) => addElement({ name, url }));
 }
 
 load();
@@ -35,13 +34,15 @@ async function removeElement(button, link) {
     console.log(link.innerHTML, link.href);
     button.parentNode.remove();
 
-  await fetch(`http://localhost:3000?name=${link.innerHTML}&url=${link.href}&del=1`).then((data) => data.json());
+  await fetch(`http://localhost:3000?name=${link.innerHTML}&url=${link.href}&del=1`)
+    .then(data => data.json());
 
   // caso a url esteja na forma 'http://url.xxx/', a '/' do final deve ser removida.
-  await fetch(`http://localhost:3000?name=${link.innerHTML}&url=${link.href.substring(0, link.href.length - 1)}&del=1`).then((data) => data.json());
+  await fetch(`http://localhost:3000?name=${link.innerHTML}&url=${link.href.substring(0, link.href.length - 1)}&del=1`)
+    .then(data => data.json());
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   let { value } = input;
@@ -49,15 +50,34 @@ form.addEventListener("submit", (event) => {
   if (!value) 
     return alert('Preencha o campo!');
 
-  const [name, url] = value.split(",");
+  const [newName, newUrl] = value.split(", ");
 
-  if (!url) 
-    return alert('Formate o texto da maneira correta!');
+  if (!newUrl) 
+    return alert('Formate o texto da maneira correta, separando o nome da URL e a URL por uma vírgula e um espaço.\n\nEx: Google, https://google.com');
 
-  if (!/^http/.test(url)) 
+  if (!/^http/.test(newUrl)) 
     return alert("Digite a url da maneira correta!");
 
-  addElement({ name, url });
+  const res = await fetch("http://localhost:3000/")
+    .then(data => data.json())
+  
+  // verifica se já existe uma url assim
+  let exists = false;
+    
+  res.urls.map(({ url }) => {
+    if(newUrl == url) exists = true;
+  });
+
+  if(exists) {
+    alert("Ei, você já informou essa URL");
+  } else {
+    const name = newName;
+    const url = newUrl;
+    addElement({ name, url });
+
+    await fetch(`http://localhost:3000?name=${name}&url=${url}`)
+      .then(data => data.json());
+  }
 
   input.value = "";
 })
