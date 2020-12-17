@@ -45,7 +45,7 @@ setInterval(() => {
   }
 
   console.clear();
-  console.log('======== CPU Stats ========');
+  console.log('======== RAM Stats ========');
   console.table(stats);
 
   log(`${JSON.stringify(stats)}\n`);
