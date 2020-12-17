@@ -56,13 +56,13 @@ O gerenciador de URLs permite que o usuário cadastre URLs, inserindo os dados n
 }
 ```
 
-## Exibição dos dados da CPU
+## Exibição dos dados da memória RAM
 
 <div align="center">
   <img src="./.github/stats.png" width="500" />
 </div>
 
-Para exibir os dados da CPU, inicie o arquivo `stats.js`:
+Para exibir os dados da memória RAM, inicie o arquivo `stats.js`:
 ```
 node stats.js
 ```
